@@ -11,6 +11,15 @@
 		57469DFB2939C975006B1D42 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469DFA2939C975006B1D42 /* ContentView.swift */; };
 		57469DFD2939C976006B1D42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57469DFC2939C976006B1D42 /* Assets.xcassets */; };
 		57469E002939C976006B1D42 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57469DFF2939C976006B1D42 /* Preview Assets.xcassets */; };
+		57469E082939CEF7006B1D42 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E072939CEF7006B1D42 /* DependencyInjector.swift */; };
+		57469E0C2939CF80006B1D42 /* SessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E0B2939CF80006B1D42 /* SessionRepository.swift */; };
+		57469E0E2939CF97006B1D42 /* ConnectionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E0D2939CF97006B1D42 /* ConnectionRepository.swift */; };
+		57469E102939CFB5006B1D42 /* RepositoryConteiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E0F2939CFB5006B1D42 /* RepositoryConteiner.swift */; };
+		57469E122939D022006B1D42 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E112939D022006B1D42 /* AppEnvironment.swift */; };
+		57469E172939D079006B1D42 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E162939D079006B1D42 /* MainScreen.swift */; };
+		57469E192939D084006B1D42 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E182939D084006B1D42 /* MainViewModel.swift */; };
+		57469E1D2939D190006B1D42 /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E1C2939D190006B1D42 /* RegisterScreen.swift */; };
+		57469E1F2939D19C006B1D42 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E1E2939D19C006B1D42 /* RegisterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +28,15 @@
 		57469DFA2939C975006B1D42 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		57469DFC2939C976006B1D42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57469DFF2939C976006B1D42 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		57469E072939CEF7006B1D42 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
+		57469E0B2939CF80006B1D42 /* SessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRepository.swift; sourceTree = "<group>"; };
+		57469E0D2939CF97006B1D42 /* ConnectionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionRepository.swift; sourceTree = "<group>"; };
+		57469E0F2939CFB5006B1D42 /* RepositoryConteiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryConteiner.swift; sourceTree = "<group>"; };
+		57469E112939D022006B1D42 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		57469E162939D079006B1D42 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		57469E182939D084006B1D42 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		57469E1C2939D190006B1D42 /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
+		57469E1E2939D19C006B1D42 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +69,11 @@
 		57469DF72939C975006B1D42 /* SompoWifiiTest */ = {
 			isa = PBXGroup;
 			children = (
+				57469E092939CF20006B1D42 /* Data */,
+				57469E062939CEBB006B1D42 /* Injection */,
+				57469E132939D035006B1D42 /* UI */,
 				57469DF82939C975006B1D42 /* SompoWifiiTestApp.swift */,
+				57469E112939D022006B1D42 /* AppEnvironment.swift */,
 				57469DFA2939C975006B1D42 /* ContentView.swift */,
 				57469DFC2939C976006B1D42 /* Assets.xcassets */,
 				57469DFE2939C976006B1D42 /* Preview Content */,
@@ -65,6 +87,67 @@
 				57469DFF2939C976006B1D42 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		57469E062939CEBB006B1D42 /* Injection */ = {
+			isa = PBXGroup;
+			children = (
+				57469E072939CEF7006B1D42 /* DependencyInjector.swift */,
+				57469E0F2939CFB5006B1D42 /* RepositoryConteiner.swift */,
+			);
+			path = Injection;
+			sourceTree = "<group>";
+		};
+		57469E092939CF20006B1D42 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				57469E0A2939CF38006B1D42 /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		57469E0A2939CF38006B1D42 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				57469E0B2939CF80006B1D42 /* SessionRepository.swift */,
+				57469E0D2939CF97006B1D42 /* ConnectionRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		57469E132939D035006B1D42 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				57469E142939D046006B1D42 /* Screens */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		57469E142939D046006B1D42 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				57469E1A2939D096006B1D42 /* Register */,
+				57469E152939D05B006B1D42 /* Main */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		57469E152939D05B006B1D42 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				57469E162939D079006B1D42 /* MainScreen.swift */,
+				57469E182939D084006B1D42 /* MainViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		57469E1A2939D096006B1D42 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				57469E1C2939D190006B1D42 /* RegisterScreen.swift */,
+				57469E1E2939D19C006B1D42 /* RegisterViewModel.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +220,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57469E1D2939D190006B1D42 /* RegisterScreen.swift in Sources */,
+				57469E172939D079006B1D42 /* MainScreen.swift in Sources */,
+				57469E122939D022006B1D42 /* AppEnvironment.swift in Sources */,
+				57469E0E2939CF97006B1D42 /* ConnectionRepository.swift in Sources */,
+				57469E1F2939D19C006B1D42 /* RegisterViewModel.swift in Sources */,
 				57469DFB2939C975006B1D42 /* ContentView.swift in Sources */,
+				57469E082939CEF7006B1D42 /* DependencyInjector.swift in Sources */,
+				57469E102939CFB5006B1D42 /* RepositoryConteiner.swift in Sources */,
+				57469E0C2939CF80006B1D42 /* SessionRepository.swift in Sources */,
 				57469DF92939C975006B1D42 /* SompoWifiiTestApp.swift in Sources */,
+				57469E192939D084006B1D42 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
