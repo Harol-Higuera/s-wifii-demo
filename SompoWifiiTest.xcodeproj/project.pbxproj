@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		57469DF92939C975006B1D42 /* SompoWifiiTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469DF82939C975006B1D42 /* SompoWifiiTestApp.swift */; };
-		57469DFB2939C975006B1D42 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469DFA2939C975006B1D42 /* ContentView.swift */; };
 		57469DFD2939C976006B1D42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57469DFC2939C976006B1D42 /* Assets.xcassets */; };
 		57469E002939C976006B1D42 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57469DFF2939C976006B1D42 /* Preview Assets.xcassets */; };
 		57469E082939CEF7006B1D42 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E072939CEF7006B1D42 /* DependencyInjector.swift */; };
@@ -25,7 +24,6 @@
 /* Begin PBXFileReference section */
 		57469DF52939C975006B1D42 /* SompoWifiiTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SompoWifiiTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57469DF82939C975006B1D42 /* SompoWifiiTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SompoWifiiTestApp.swift; sourceTree = "<group>"; };
-		57469DFA2939C975006B1D42 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		57469DFC2939C976006B1D42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57469DFF2939C976006B1D42 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		57469E072939CEF7006B1D42 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 				57469E132939D035006B1D42 /* UI */,
 				57469DF82939C975006B1D42 /* SompoWifiiTestApp.swift */,
 				57469E112939D022006B1D42 /* AppEnvironment.swift */,
-				57469DFA2939C975006B1D42 /* ContentView.swift */,
 				57469DFC2939C976006B1D42 /* Assets.xcassets */,
 				57469DFE2939C976006B1D42 /* Preview Content */,
 			);
@@ -225,7 +222,6 @@
 				57469E122939D022006B1D42 /* AppEnvironment.swift in Sources */,
 				57469E0E2939CF97006B1D42 /* ConnectionRepository.swift in Sources */,
 				57469E1F2939D19C006B1D42 /* RegisterViewModel.swift in Sources */,
-				57469DFB2939C975006B1D42 /* ContentView.swift in Sources */,
 				57469E082939CEF7006B1D42 /* DependencyInjector.swift in Sources */,
 				57469E102939CFB5006B1D42 /* RepositoryConteiner.swift in Sources */,
 				57469E0C2939CF80006B1D42 /* SessionRepository.swift in Sources */,

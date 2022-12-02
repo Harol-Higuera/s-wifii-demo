@@ -9,9 +9,27 @@ import SwiftUI
 
 @main
 struct SompoWifiiTestApp: App {
+    
+    @UIApplicationDelegateAdaptor (AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let environment = appDelegate.enviroment
+            MainScreen(viewModel: MainScreen.ViewModel(container: environment.container))
         }
+    }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    
+    lazy var enviroment: AppEnvironment = {
+        AppEnvironment.bootstrap()
+    }()
+    
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool
+    {
+        return true
     }
 }

@@ -6,3 +6,30 @@
 //
 
 import Foundation
+
+struct AppEnvironment {
+    let container: DIContainer
+}
+
+extension AppEnvironment {
+    
+    static func bootstrap() -> AppEnvironment {
+        let repositories = configuredRepositories()
+        let diContainer = DIContainer(repositories: repositories)
+        return AppEnvironment(container: diContainer)
+    }
+    
+    private static func configuredRepositories() -> DIContainer.Repositories {
+        
+        // MARK: SessionRepositoryの初期化
+        let sessionRepository = SessionRepositoryImpl()
+
+        // MARK: ConnectionRepositoryの初期化
+        let connectionRepository = ConnectionRepositoryImpl()
+        
+        return .init(
+            sessionRepository: sessionRepository,
+            connectionRepository: connectionRepository
+        )
+    }
+}

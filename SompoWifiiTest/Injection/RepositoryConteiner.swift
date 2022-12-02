@@ -6,3 +6,27 @@
 //
 
 import Foundation
+
+import Foundation
+
+extension DIContainer {
+    struct Repositories {
+        let sessionRepository: SessionRepository
+        let connectionRepository: ConnectionRepository
+        
+        init(
+            sessionRepository: SessionRepository,
+            connectionRepository: ConnectionRepository
+        ) {
+            self.sessionRepository = sessionRepository
+            self.connectionRepository = connectionRepository
+        }
+        
+        static var stub: Self {
+            .init(
+                sessionRepository: StubSessionRepository(),
+                connectionRepository: StubConnectionRepository()
+            )
+        }
+    }
+}
