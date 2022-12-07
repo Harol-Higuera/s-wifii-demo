@@ -21,14 +21,14 @@ extension AppEnvironment {
     
     private static func configuredRepositories() -> DIContainer.Repositories {
         
-        // MARK: SessionRepositoryの初期化
-        let sessionRepository = SessionRepositoryImpl()
+        // MARK: DeviceRepositoryの初期化
+        let deviceRepository = DeviceRepositoryImpl(userDefaults: UserDefaults.standard)
 
         // MARK: ConnectionRepositoryの初期化
         let connectionRepository = ConnectionRepositoryImpl()
         
         return .init(
-            sessionRepository: sessionRepository,
+            deviceRepository: deviceRepository,
             connectionRepository: connectionRepository
         )
     }

@@ -11,7 +11,7 @@
 		57469DFD2939C976006B1D42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57469DFC2939C976006B1D42 /* Assets.xcassets */; };
 		57469E002939C976006B1D42 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57469DFF2939C976006B1D42 /* Preview Assets.xcassets */; };
 		57469E082939CEF7006B1D42 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E072939CEF7006B1D42 /* DependencyInjector.swift */; };
-		57469E0C2939CF80006B1D42 /* SessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E0B2939CF80006B1D42 /* SessionRepository.swift */; };
+		57469E0C2939CF80006B1D42 /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E0B2939CF80006B1D42 /* DeviceRepository.swift */; };
 		57469E0E2939CF97006B1D42 /* ConnectionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E0D2939CF97006B1D42 /* ConnectionRepository.swift */; };
 		57469E102939CFB5006B1D42 /* RepositoryConteiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E0F2939CFB5006B1D42 /* RepositoryConteiner.swift */; };
 		57469E122939D022006B1D42 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E112939D022006B1D42 /* AppEnvironment.swift */; };
@@ -19,6 +19,11 @@
 		57469E192939D084006B1D42 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E182939D084006B1D42 /* MainViewModel.swift */; };
 		57469E1D2939D190006B1D42 /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E1C2939D190006B1D42 /* RegisterScreen.swift */; };
 		57469E1F2939D19C006B1D42 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E1E2939D19C006B1D42 /* RegisterViewModel.swift */; };
+		57E2C7332940B271004A5761 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C7322940B271004A5761 /* DeviceModel.swift */; };
+		57E2C7362940D98A004A5761 /* AppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C7352940D98A004A5761 /* AppAlert.swift */; };
+		57E2C7382940D9C5004A5761 /* AppAlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C7372940D9C5004A5761 /* AppAlertModel.swift */; };
+		57E2C73B2940DA4A004A5761 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C73A2940DA4A004A5761 /* BaseViewModel.swift */; };
+		57E2C73D2940DC9D004A5761 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C73C2940DC9D004A5761 /* Loader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +32,7 @@
 		57469DFC2939C976006B1D42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57469DFF2939C976006B1D42 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		57469E072939CEF7006B1D42 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
-		57469E0B2939CF80006B1D42 /* SessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRepository.swift; sourceTree = "<group>"; };
+		57469E0B2939CF80006B1D42 /* DeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
 		57469E0D2939CF97006B1D42 /* ConnectionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionRepository.swift; sourceTree = "<group>"; };
 		57469E0F2939CFB5006B1D42 /* RepositoryConteiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryConteiner.swift; sourceTree = "<group>"; };
 		57469E112939D022006B1D42 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
@@ -35,6 +40,11 @@
 		57469E182939D084006B1D42 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		57469E1C2939D190006B1D42 /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
 		57469E1E2939D19C006B1D42 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		57E2C7322940B271004A5761 /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
+		57E2C7352940D98A004A5761 /* AppAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlert.swift; sourceTree = "<group>"; };
+		57E2C7372940D9C5004A5761 /* AppAlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlertModel.swift; sourceTree = "<group>"; };
+		57E2C73A2940DA4A004A5761 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		57E2C73C2940DC9D004A5761 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +77,7 @@
 		57469DF72939C975006B1D42 /* SompoWifiiTest */ = {
 			isa = PBXGroup;
 			children = (
+				57E2C7392940DA3C004A5761 /* Base */,
 				57469E092939CF20006B1D42 /* Data */,
 				57469E062939CEBB006B1D42 /* Injection */,
 				57469E132939D035006B1D42 /* UI */,
@@ -98,6 +109,7 @@
 		57469E092939CF20006B1D42 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				57E2C7312940B24D004A5761 /* Models */,
 				57469E0A2939CF38006B1D42 /* Repositories */,
 			);
 			path = Data;
@@ -106,7 +118,7 @@
 		57469E0A2939CF38006B1D42 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				57469E0B2939CF80006B1D42 /* SessionRepository.swift */,
+				57469E0B2939CF80006B1D42 /* DeviceRepository.swift */,
 				57469E0D2939CF97006B1D42 /* ConnectionRepository.swift */,
 			);
 			path = Repositories;
@@ -115,6 +127,7 @@
 		57469E132939D035006B1D42 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				57E2C7342940D97F004A5761 /* Components */,
 				57469E142939D046006B1D42 /* Screens */,
 			);
 			path = UI;
@@ -145,6 +158,32 @@
 				57469E1E2939D19C006B1D42 /* RegisterViewModel.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		57E2C7312940B24D004A5761 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				57E2C7322940B271004A5761 /* DeviceModel.swift */,
+				57E2C7372940D9C5004A5761 /* AppAlertModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		57E2C7342940D97F004A5761 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				57E2C7352940D98A004A5761 /* AppAlert.swift */,
+				57E2C73C2940DC9D004A5761 /* Loader.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		57E2C7392940DA3C004A5761 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				57E2C73A2940DA4A004A5761 /* BaseViewModel.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,14 +258,19 @@
 			files = (
 				57469E1D2939D190006B1D42 /* RegisterScreen.swift in Sources */,
 				57469E172939D079006B1D42 /* MainScreen.swift in Sources */,
+				57E2C7362940D98A004A5761 /* AppAlert.swift in Sources */,
+				57E2C73B2940DA4A004A5761 /* BaseViewModel.swift in Sources */,
 				57469E122939D022006B1D42 /* AppEnvironment.swift in Sources */,
 				57469E0E2939CF97006B1D42 /* ConnectionRepository.swift in Sources */,
 				57469E1F2939D19C006B1D42 /* RegisterViewModel.swift in Sources */,
 				57469E082939CEF7006B1D42 /* DependencyInjector.swift in Sources */,
+				57E2C7382940D9C5004A5761 /* AppAlertModel.swift in Sources */,
 				57469E102939CFB5006B1D42 /* RepositoryConteiner.swift in Sources */,
-				57469E0C2939CF80006B1D42 /* SessionRepository.swift in Sources */,
+				57469E0C2939CF80006B1D42 /* DeviceRepository.swift in Sources */,
+				57E2C7332940B271004A5761 /* DeviceModel.swift in Sources */,
 				57469DF92939C975006B1D42 /* SompoWifiiTestApp.swift in Sources */,
 				57469E192939D084006B1D42 /* MainViewModel.swift in Sources */,
+				57E2C73D2940DC9D004A5761 /* Loader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
