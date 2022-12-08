@@ -41,6 +41,21 @@ extension MainScreen {
         ) {
             if (ssid.isEmpty || password.isEmpty) {
                 onError("SSIDとパスワードを入力してください！")
+                return
+            }
+            
+            let deviceModel = DeviceModel(deviceSsid: ssid, devicePassword: password)
+            isLoading = true
+            container.repositories.connectionRepository.connect(deviceModel: deviceModel) { [weak self] (error) in
+                guard let weakSelf = self else {
+                    return
+                }
+        
+                weakSelf.isLoading = false
+                if let error = error {
+                    onError(error)
+                    return
+                }
             }
         }
     }

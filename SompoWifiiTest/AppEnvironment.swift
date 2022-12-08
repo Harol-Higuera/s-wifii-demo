@@ -25,7 +25,7 @@ extension AppEnvironment {
         let deviceRepository = DeviceRepositoryImpl(userDefaults: UserDefaults.standard)
 
         // MARK: ConnectionRepositoryの初期化
-        let connectionRepository = ConnectionRepositoryImpl()
+        let connectionRepository = ConnectionRepositoryImpl(deviceRepository: deviceRepository)
         
         return .init(
             deviceRepository: deviceRepository,

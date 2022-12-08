@@ -13,11 +13,7 @@ fileprivate let keyDeviceModel = "key_device_model"
 protocol DeviceRepository {
     func getDevice() -> DeviceModel?
     
-    func setDevice(
-        ssid:  String,
-        password: String,
-        completion: @escaping (Bool) -> Void
-    )
+    func setDevice(deviceModel: DeviceModel, completion: @escaping (Bool) -> Void)
 }
 
 final class DeviceRepositoryImpl: DeviceRepository {
@@ -49,21 +45,20 @@ final class DeviceRepositoryImpl: DeviceRepository {
         return nil
     }
     
-    func setDevice(ssid: String, password: String, completion: @escaping (Bool) -> Void) {
-        let model = DeviceModel(deviceSsid: ssid, devicePassword: password)
+    func setDevice(deviceModel: DeviceModel, completion: @escaping (Bool) -> Void) {
         
         do {
             // Create JSON Encoder
             let encoder = JSONEncoder()
-            // Encode Note
-            let data = try encoder.encode(model)
+            // Encode DeviceModel
+            let data = try encoder.encode(deviceModel)
             
             // Write/Set Data
             userDefaults.set(data, forKey: keyDeviceModel)
             completion(true)
             
         } catch {
-            print("Unable to Encode Note (\(error))")
+            print("Unable to Encode DeviceModel (\(error))")
             completion(false)
         }
     }
@@ -76,7 +71,7 @@ final class DeviceRepositoryImpl: DeviceRepository {
 }
 
 struct StubDeviceRepository: DeviceRepository {
-    func setDevice(ssid: String, password: String, completion: @escaping (Bool) -> Void) {
+    func setDevice(deviceModel: DeviceModel, completion: @escaping (Bool) -> Void) {
     }
     
     func getDevice() -> DeviceModel? {
