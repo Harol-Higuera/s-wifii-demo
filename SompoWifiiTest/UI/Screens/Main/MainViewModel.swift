@@ -33,7 +33,7 @@ extension MainScreen {
         }
         
         
-        
+        var count = 0;
         func registerDevice (
             ssid: String,
             password: String,
@@ -43,18 +43,60 @@ extension MainScreen {
                 onError("SSIDとパスワードを入力してください！")
                 return
             }
-            
             let deviceModel = DeviceModel(deviceSsid: ssid, devicePassword: password)
             isLoading = true
             container.repositories.connectionRepository.connect(deviceModel: deviceModel) { [weak self] (error) in
-                guard let weakSelf = self else {
+                guard let weakSelf1 = self else {
                     return
                 }
         
-                weakSelf.isLoading = false
-                if let error = error {
-                    onError(error)
+                Timer.scheduledTimer(withTimeInterval:  1.0, repeats: true) { timer in
+                    
+                    weakSelf1.container.repositories.connectionRepository.containsIssd(deviceModel: deviceModel) { [weak self] isContained, error in
+                        guard let weakSelf2 = self else {
+                            return
+                        }
+                        
+                        if let error = error {
+                            timer.invalidate()
+                            weakSelf2.count = 0
+                            weakSelf2.isLoading = false
+                            onError(error)
+                            return
+                        }
+                        
+                        if (isContained) {
+                            timer.invalidate()
+                            weakSelf2.count = 0
+                            weakSelf2.isLoading = false
+                            weakSelf2.initializeState()
+                        }
+                    }
+                    
+                    if (weakSelf1.count == 5) {
+                        timer.invalidate()
+                        weakSelf1.count = 0
+                        weakSelf1.isLoading = false
+                    }
+                                
+                    weakSelf1.count += 1
+                    print("Harol... Timer count: \(weakSelf1.count)")
+                }
+                
+            }
+        }
+        
+        func disconnectDevice() {
+            container.repositories.connectionRepository.removeConfiguration { [weak self] success in
+                guard let weakSelf1 = self else {
                     return
+                }
+                if (success) {
+                    weakSelf1.initializeState()
+                    return
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    weakSelf1.disconnectDevice()
                 }
             }
         }

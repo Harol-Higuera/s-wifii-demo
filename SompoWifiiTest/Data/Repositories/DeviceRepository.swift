@@ -12,7 +12,7 @@ fileprivate let keyDeviceModel = "key_device_model"
 
 protocol DeviceRepository {
     func getDevice() -> DeviceModel?
-    
+    func removeDevice()
     func setDevice(deviceModel: DeviceModel, completion: @escaping (Bool) -> Void)
 }
 
@@ -24,6 +24,10 @@ final class DeviceRepositoryImpl: DeviceRepository {
         userDefaults: UserDefaults
     ) {
         self.userDefaults = userDefaults
+    }
+    
+    func removeDevice() {
+        userDefaults.removeObject(forKey: keyDeviceModel)
     }
     
     func getDevice() -> DeviceModel? {
@@ -66,8 +70,6 @@ final class DeviceRepositoryImpl: DeviceRepository {
     deinit {
         
     }
-    
-    
 }
 
 struct StubDeviceRepository: DeviceRepository {
@@ -76,6 +78,10 @@ struct StubDeviceRepository: DeviceRepository {
     
     func getDevice() -> DeviceModel? {
         return nil
+    }
+    
+    func removeDevice() {
+        
     }
     
 }

@@ -10,8 +10,9 @@ import SystemConfiguration.CaptiveNetwork
 import NetworkExtension
 
 protocol ConnectionRepository {
-    func removeConfiguration()
+    func removeConfiguration(completion: @escaping  (_ success: Bool) -> Void)
     func connect(deviceModel: DeviceModel, completion: @escaping  (_ error: String?) -> Void)
+    func containsIssd(deviceModel: DeviceModel, completion: @escaping  (_ isContained: Bool, _ error: String?) -> Void)
 }
 
 final class ConnectionRepositoryImpl: ConnectionRepository {
@@ -29,14 +30,31 @@ final class ConnectionRepositoryImpl: ConnectionRepository {
        
     }
     
-    /// @function removeConfiguration
-    /// @discussion Remove the hotspot configuration.
-    ///
-    func removeConfiguration() {
+    /**
+     * @method removeConfigurationForSSID:
+     * @discussion This function removes Wi-Fi configuration.
+     *   If the joinOnce property was set to YES, invoking this method will disassociate from the Wi-Fi network
+     *   after the configuration is removed.
+     * @param SSID Wi-Fi SSID for which the configuration is to be deleted.
+     */
+    func removeConfiguration(completion: @escaping  (_ success: Bool) -> Void)
+    {
         guard let device = deviceRepository.getDevice() else {
             return
         }
         NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: device.deviceSsid)
+        self.associatedSSIDs { [weak self] associatedSSIDs in
+            guard let weakSelf = self else {
+                completion(false)
+                return
+            }
+            if (!associatedSSIDs.contains(device.deviceSsid)) {
+                weakSelf.deviceRepository.removeDevice()
+                completion(true)
+                return
+            }
+            completion(false)
+        }
     }
     
     /// WEP (Wired Equivalent Privacy) is the oldest and most common Wi-Fi security protocol.
@@ -59,28 +77,19 @@ final class ConnectionRepositoryImpl: ConnectionRepository {
               config.joinOnce = true
 
               NEHotspotConfigurationManager.shared.apply(config) { [weak self] (error) in
-                  guard let weakSelf = self else {
+                  guard self != nil else {
                       completion("WiFi network not found")
                       return
                   }
                   
                   // This error represents NEHotspotConfigurationError.
                   if let configError = error {
+                      print("Harol... CONFIG ERROR: \(configError)")
                       completion(configError.localizedDescription)
                       return
                   }
                   
-                  weakSelf.associatedSSIDs { associatedSSIDs in
-                      if (associatedSSIDs.contains(deviceModel.deviceSsid)) {
-                          weakSelf.deviceRepository.setDevice(deviceModel: deviceModel) { success in
-                              if success {
-                                  completion(nil)
-                                  return
-                              }
-                          }
-                      }
-                      completion("Connection failed!")
-                  }
+                  completion(nil)
               }
           } else {
               completion("Not Connected")
@@ -88,6 +97,28 @@ final class ConnectionRepositoryImpl: ConnectionRepository {
           }
       }
     
+    func containsIssd(deviceModel: DeviceModel, completion: @escaping  (_ isContained: Bool, _ error: String?) -> Void) {
+        self.associatedSSIDs { [weak self]  associatedSSIDs in
+            guard let weakSelf = self else {
+                completion(false, "Uknown error occurred!")
+                return
+            }
+            print("Harol... associatedSSIDs count: \(associatedSSIDs.count)")
+            associatedSSIDs.forEach { issd in
+                print("Harol... associated ISSD: \(issd)")
+            }
+        
+            if (associatedSSIDs.contains(deviceModel.deviceSsid)) {
+                weakSelf.deviceRepository.setDevice(deviceModel: deviceModel) { success in
+                    if success {
+                        completion(true, nil)
+                        return
+                    }
+                }
+            }
+            completion(false, nil)
+        }
+    }
     
     /// @function associatedSSIDs
     /// @discussion Get the supported interfaces at the time of the call and map an SSID with the current network information.
@@ -121,9 +152,12 @@ final class ConnectionRepositoryImpl: ConnectionRepository {
 }
 
 struct StubConnectionRepository: ConnectionRepository {
-    func removeConfiguration() {
+    func removeConfiguration(completion: @escaping  (_ success: Bool) -> Void) {
     }
     
     func connect(deviceModel: DeviceModel, completion: @escaping  (_ error: String?) -> Void) {
+    }
+    
+    func containsIssd(deviceModel: DeviceModel, completion: @escaping  (_ isContained: Bool, _ error: String?) -> Void){
     }
 }

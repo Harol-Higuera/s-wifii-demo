@@ -68,6 +68,14 @@ struct MainScreen: View {
                         }
                         .navigationTitle("登録済み")
                         .navigationBarTitleDisplayMode(.inline)
+                        .navigationBarItems(
+                            trailing: Button(action: {
+                                viewModel.disconnectDevice()
+                            }) {
+                                Text("切る")
+                                    .foregroundColor(Color.accentColor)
+                            }
+                        )
                     }
                 }
             }
