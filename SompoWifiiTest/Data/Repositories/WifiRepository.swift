@@ -18,12 +18,12 @@ protocol WifiRepository {
 final class WifiRepositoryImpl: WifiRepository {
     
 
-    let deviceRepository: ConnectionsRepository
+    let connectionsRepository: ConnectionsRepository
 
     init(
-        deviceRepository: ConnectionsRepository
+        connectionsRepository: ConnectionsRepository
     ) {
-        self.deviceRepository = deviceRepository
+        self.connectionsRepository = connectionsRepository
     }
     
     deinit {
@@ -39,7 +39,7 @@ final class WifiRepositoryImpl: WifiRepository {
      */
     func removeConfiguration(completion: @escaping  (_ success: Bool) -> Void)
     {
-        guard let device = deviceRepository.getDevice() else {
+        guard let device = connectionsRepository.getDevice() else {
             return
         }
         NEHotspotConfigurationManager.shared.removeConfiguration(forSSID: device.deviceSsid)
@@ -49,7 +49,7 @@ final class WifiRepositoryImpl: WifiRepository {
                 return
             }
             if (!associatedSSIDs.contains(device.deviceSsid)) {
-                weakSelf.deviceRepository.removeDevice()
+                weakSelf.connectionsRepository.removeDevice()
                 completion(true)
                 return
             }
@@ -113,7 +113,7 @@ final class WifiRepositoryImpl: WifiRepository {
             }
         
             if (associatedSSIDs.contains(deviceModel.deviceSsid)) {
-                weakSelf.deviceRepository.setDevice(deviceModel: deviceModel) { success in
+                weakSelf.connectionsRepository.setDevice(deviceModel: deviceModel) { success in
                     if success {
                         completion(true, nil)
                         return

@@ -11,21 +11,21 @@ import Foundation
 
 extension DIContainer {
     struct Repositories {
-        let deviceRepository: ConnectionsRepository
-        let connectionRepository: WifiRepository
+        let connectionsRepository: ConnectionsRepository
+        let wifiRepositoryRepository: WifiRepository
         
         init(
-            deviceRepository: ConnectionsRepository,
-            connectionRepository: WifiRepository
+            connectionsRepository: ConnectionsRepository,
+            wifiRepositoryRepository: WifiRepository
         ) {
-            self.deviceRepository = deviceRepository
-            self.connectionRepository = connectionRepository
+            self.connectionsRepository = connectionsRepository
+            self.wifiRepositoryRepository = wifiRepositoryRepository
         }
         
         static var stub: Self {
             .init(
-                deviceRepository: StubConnectionsRepository(),
-                connectionRepository: StubWifiRepository()
+                connectionsRepository: StubConnectionsRepository(),
+                wifiRepositoryRepository: StubWifiRepository()
             )
         }
     }

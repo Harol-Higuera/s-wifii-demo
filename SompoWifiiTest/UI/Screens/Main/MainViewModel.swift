@@ -25,7 +25,7 @@ extension MainScreen {
         }
         
         func initializeState() {
-            let deviceModel = container.repositories.deviceRepository.getDevice()
+            let deviceModel = container.repositories.connectionsRepository.getDevice()
             isConnectedToWifii = deviceModel != nil
             guard let deviceModel = deviceModel else {
                 return
@@ -35,7 +35,7 @@ extension MainScreen {
         
         
         func loadDevicesFromMemory() {
-            devices = container.repositories.deviceRepository.loadDevicesFromMemory()
+            devices = container.repositories.connectionsRepository.loadDevicesFromMemory()
         }
         
         var count = 0;
@@ -50,14 +50,14 @@ extension MainScreen {
             }
             let deviceModel = DeviceModel(deviceSsid: ssid, devicePassword: password)
             isLoading = true
-            container.repositories.connectionRepository.connect(deviceModel: deviceModel) { [weak self] (error) in
+            container.repositories.wifiRepositoryRepository.connect(deviceModel: deviceModel) { [weak self] (error) in
                 guard let weakSelf1 = self else {
                     return
                 }
         
                 Timer.scheduledTimer(withTimeInterval:  1.0, repeats: true) { timer in
                     
-                    weakSelf1.container.repositories.connectionRepository.containsIssd(deviceModel: deviceModel) { [weak self] isContained, error in
+                    weakSelf1.container.repositories.wifiRepositoryRepository.containsIssd(deviceModel: deviceModel) { [weak self] isContained, error in
                         guard let weakSelf2 = self else {
                             return
                         }
@@ -92,7 +92,7 @@ extension MainScreen {
         }
         
         func disconnectDevice() {
-            container.repositories.connectionRepository.removeConfiguration { [weak self] success in
+            container.repositories.wifiRepositoryRepository.removeConfiguration { [weak self] success in
                 guard let weakSelf1 = self else {
                     return
                 }
