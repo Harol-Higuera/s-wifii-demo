@@ -13,6 +13,7 @@ extension MainScreen {
         @Published var isLoading: Bool = false
         @Published var isConnectedToWifii: Bool?
         @Published var deviceSSid: String = ""
+        @Published var devices: [DeviceModel] = []
         
         override init(container: DIContainer) {
             super.init(container: container)
@@ -32,6 +33,10 @@ extension MainScreen {
             deviceSSid = deviceModel.deviceSsid
         }
         
+        
+        func loadDevicesFromMemory() {
+            devices = container.repositories.deviceRepository.loadDevicesFromMemory()
+        }
         
         var count = 0;
         func registerDevice (

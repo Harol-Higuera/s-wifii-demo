@@ -11,8 +11,8 @@
 		57469DFD2939C976006B1D42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57469DFC2939C976006B1D42 /* Assets.xcassets */; };
 		57469E002939C976006B1D42 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57469DFF2939C976006B1D42 /* Preview Assets.xcassets */; };
 		57469E082939CEF7006B1D42 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E072939CEF7006B1D42 /* DependencyInjector.swift */; };
-		57469E0C2939CF80006B1D42 /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E0B2939CF80006B1D42 /* DeviceRepository.swift */; };
-		57469E0E2939CF97006B1D42 /* ConnectionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E0D2939CF97006B1D42 /* ConnectionRepository.swift */; };
+		57469E0C2939CF80006B1D42 /* ConnectionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E0B2939CF80006B1D42 /* ConnectionsRepository.swift */; };
+		57469E0E2939CF97006B1D42 /* WifiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E0D2939CF97006B1D42 /* WifiRepository.swift */; };
 		57469E102939CFB5006B1D42 /* RepositoryConteiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E0F2939CFB5006B1D42 /* RepositoryConteiner.swift */; };
 		57469E122939D022006B1D42 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E112939D022006B1D42 /* AppEnvironment.swift */; };
 		57469E172939D079006B1D42 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57469E162939D079006B1D42 /* MainScreen.swift */; };
@@ -32,8 +32,8 @@
 		57469DFC2939C976006B1D42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57469DFF2939C976006B1D42 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		57469E072939CEF7006B1D42 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
-		57469E0B2939CF80006B1D42 /* DeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
-		57469E0D2939CF97006B1D42 /* ConnectionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionRepository.swift; sourceTree = "<group>"; };
+		57469E0B2939CF80006B1D42 /* ConnectionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsRepository.swift; sourceTree = "<group>"; };
+		57469E0D2939CF97006B1D42 /* WifiRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiRepository.swift; sourceTree = "<group>"; };
 		57469E0F2939CFB5006B1D42 /* RepositoryConteiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryConteiner.swift; sourceTree = "<group>"; };
 		57469E112939D022006B1D42 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		57469E162939D079006B1D42 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
@@ -120,8 +120,8 @@
 		57469E0A2939CF38006B1D42 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				57469E0B2939CF80006B1D42 /* DeviceRepository.swift */,
-				57469E0D2939CF97006B1D42 /* ConnectionRepository.swift */,
+				57469E0B2939CF80006B1D42 /* ConnectionsRepository.swift */,
+				57469E0D2939CF97006B1D42 /* WifiRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -263,12 +263,12 @@
 				57E2C7362940D98A004A5761 /* AppAlert.swift in Sources */,
 				57E2C73B2940DA4A004A5761 /* BaseViewModel.swift in Sources */,
 				57469E122939D022006B1D42 /* AppEnvironment.swift in Sources */,
-				57469E0E2939CF97006B1D42 /* ConnectionRepository.swift in Sources */,
+				57469E0E2939CF97006B1D42 /* WifiRepository.swift in Sources */,
 				57469E1F2939D19C006B1D42 /* RegisterViewModel.swift in Sources */,
 				57469E082939CEF7006B1D42 /* DependencyInjector.swift in Sources */,
 				57E2C7382940D9C5004A5761 /* AppAlertModel.swift in Sources */,
 				57469E102939CFB5006B1D42 /* RepositoryConteiner.swift in Sources */,
-				57469E0C2939CF80006B1D42 /* DeviceRepository.swift in Sources */,
+				57469E0C2939CF80006B1D42 /* ConnectionsRepository.swift in Sources */,
 				57E2C7332940B271004A5761 /* DeviceModel.swift in Sources */,
 				57469DF92939C975006B1D42 /* SompoWifiiTestApp.swift in Sources */,
 				57469E192939D084006B1D42 /* MainViewModel.swift in Sources */,

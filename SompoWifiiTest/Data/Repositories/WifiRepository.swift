@@ -1,5 +1,5 @@
 //
-//  ConnectionRepository.swift
+//  WifiRepository.swift
 //  SompoWifiiTest
 //
 //  Created by Harol Higuera on 2022/12/02.
@@ -9,19 +9,19 @@ import SwiftUI
 import SystemConfiguration.CaptiveNetwork
 import NetworkExtension
 
-protocol ConnectionRepository {
+protocol WifiRepository {
     func removeConfiguration(completion: @escaping  (_ success: Bool) -> Void)
     func connect(deviceModel: DeviceModel, completion: @escaping  (_ error: String?) -> Void)
     func containsIssd(deviceModel: DeviceModel, completion: @escaping  (_ isContained: Bool, _ error: String?) -> Void)
 }
 
-final class ConnectionRepositoryImpl: ConnectionRepository {
+final class WifiRepositoryImpl: WifiRepository {
     
 
-    let deviceRepository: DeviceRepository
+    let deviceRepository: ConnectionsRepository
 
     init(
-        deviceRepository: DeviceRepository
+        deviceRepository: ConnectionsRepository
     ) {
         self.deviceRepository = deviceRepository
     }
@@ -155,7 +155,7 @@ final class ConnectionRepositoryImpl: ConnectionRepository {
     }
 }
 
-struct StubConnectionRepository: ConnectionRepository {
+struct StubWifiRepository: WifiRepository {
     func removeConfiguration(completion: @escaping  (_ success: Bool) -> Void) {
     }
     

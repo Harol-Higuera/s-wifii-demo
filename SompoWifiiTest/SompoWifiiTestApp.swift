@@ -16,6 +16,7 @@ struct SompoWifiiTestApp: App {
         WindowGroup {
             let environment = appDelegate.enviroment
             MainScreen(viewModel: MainScreen.ViewModel(container: environment.container))
+                .environment(\.colorScheme, .light)
         }
     }
 }
