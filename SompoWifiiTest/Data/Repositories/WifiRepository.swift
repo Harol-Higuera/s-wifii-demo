@@ -88,7 +88,7 @@ final class WifiRepositoryImpl: WifiRepository {
                   
                   // This error represents NEHotspotConfigurationError.
                   if let configError = error {
-                      print("Harol... CONFIG ERROR: \(configError)")
+                      print("WifiRepository..CONFIG ERROR: \(configError)")
                       completion(configError.localizedDescription)
                       return
                   }
@@ -107,9 +107,9 @@ final class WifiRepositoryImpl: WifiRepository {
                 completion(false, "Uknown error occurred!")
                 return
             }
-            print("Harol... associatedSSIDs count: \(associatedSSIDs.count)")
+            print("WifiRepository... associatedSSIDs count: \(associatedSSIDs.count)")
             associatedSSIDs.forEach { issd in
-                print("Harol... associated ISSD: \(issd)")
+                print("WifiRepository... associated ISSD: \(issd)")
             }
         
             if (associatedSSIDs.contains(deviceModel.deviceSsid)) {

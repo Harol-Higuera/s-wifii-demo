@@ -15,6 +15,9 @@ extension MainScreen {
         @Published var deviceSSid: String = ""
         @Published var devices: [DeviceModel] = []
         
+        @Published var entrySsid: String = ""
+        @Published var entryPassword: String = ""
+        
         override init(container: DIContainer) {
             super.init(container: container)
             self.initializeState()
@@ -25,6 +28,7 @@ extension MainScreen {
         }
         
         func initializeState() {
+            loadDevicesFromMemory()
             let deviceModel = container.repositories.connectionsRepository.getDevice()
             isConnectedToWifii = deviceModel != nil
             guard let deviceModel = deviceModel else {
@@ -33,9 +37,8 @@ extension MainScreen {
             deviceSSid = deviceModel.deviceSsid
         }
         
-        
         func loadDevicesFromMemory() {
-            devices = container.repositories.connectionsRepository.loadDevicesFromMemory()
+            devices = container.repositories.devicesRepositoryRepository.loadDevicesFromMemory()
         }
         
         var count = 0;
@@ -54,7 +57,7 @@ extension MainScreen {
                 guard let weakSelf1 = self else {
                     return
                 }
-        
+                
                 Timer.scheduledTimer(withTimeInterval:  1.0, repeats: true) { timer in
                     
                     weakSelf1.container.repositories.wifiRepositoryRepository.containsIssd(deviceModel: deviceModel) { [weak self] isContained, error in
@@ -74,7 +77,13 @@ extension MainScreen {
                             timer.invalidate()
                             weakSelf2.count = 0
                             weakSelf2.isLoading = false
-                            weakSelf2.initializeState()
+                            weakSelf2.container.repositories.devicesRepositoryRepository.addDeviceToMemory(deviceModel) { error in
+                                if let error = error {
+                                    print("Unable to addDeviceToMemory (\(error))")
+                                }
+                                weakSelf2.initializeState()
+                            }
+                            
                         }
                     }
                     
@@ -83,9 +92,9 @@ extension MainScreen {
                         weakSelf1.count = 0
                         weakSelf1.isLoading = false
                     }
-                                
+                    
                     weakSelf1.count += 1
-                    print("Harol... Timer count: \(weakSelf1.count)")
+                    print("Timer count: \(weakSelf1.count)")
                 }
                 
             }
@@ -103,6 +112,24 @@ extension MainScreen {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     weakSelf1.disconnectDevice()
                 }
+            }
+        }
+        
+        func populateFields(model: DeviceModel) {
+            entrySsid = model.deviceSsid
+            entryPassword = model.devicePassword
+        }
+        
+        func deleteDeviceModel(model: DeviceModel) {
+            container.repositories.devicesRepositoryRepository.deleteDeviceToMemory(model) { [weak self]  error in
+                guard let weakSelf1 = self else {
+                    return
+                }
+                if let error = error {
+                    print("Unable to deleteDeviceFromMemory (\(error))")
+                    return
+                }
+                weakSelf1.loadDevicesFromMemory()
             }
         }
     }

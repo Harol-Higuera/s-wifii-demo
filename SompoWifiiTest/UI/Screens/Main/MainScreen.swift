@@ -9,8 +9,6 @@ import SwiftUI
 
 struct MainScreen: View {
     @ObservedObject private(set) var viewModel: ViewModel
-    @State var entrySsid: String = ""
-    @State var entryPassword: String = ""
     
     var body: some View {
         ZStack {
@@ -24,25 +22,28 @@ struct MainScreen: View {
                         
                         VStack {
                             Form {
-                                
-                                
                                 Section(header: Text("SSID")) {
-                                    TextField("SSID", text:  $entrySsid)
+                                    TextField("SSID", text:  $viewModel.entrySsid)
                                         .padding(.all)
                                         .background(Color(red: 245, green: 245, blue: 245))
                                 }
                                 Section(header: Text("パスワード")) {
-                                    TextField("パスワード", text:  $entryPassword)
+                                    TextField("パスワード", text:  $viewModel.entryPassword)
                                         .padding(.all)
                                         .background(Color(red: 245, green: 245, blue: 245))
                                 }
                                 
+                                Section(header: Text("履歴")) {
+                                    DevicesList(models: viewModel.devices, viewModel: viewModel, onPopulateFields: { model in
+                                        viewModel.populateFields(model: model)
+                                    })
+                                }
                             }
                             .navigationBarItems(
                                 trailing: Button(action: {
                                     viewModel.registerDevice(
-                                        ssid: entrySsid,
-                                        password: entryPassword) { errorMessage in
+                                        ssid: viewModel.entrySsid,
+                                        password: viewModel.entryPassword) { errorMessage in
                                             let model = AppAlertModel(toNotice: errorMessage, onOkClicked: {
                                                 viewModel.resetAlertModel()
                                             })
@@ -86,5 +87,73 @@ struct MainScreen: View {
         }.alert(item: $viewModel.appAlertModel) { model in
             AppAlert(appAlertModel: model).show
         }
+    }
+}
+
+
+struct DevicesList: View {
+    let models: [DeviceModel]
+    let viewModel: MainScreen.ViewModel
+    let onPopulateFields: (DeviceModel) -> Void
+    var body: some View {
+        if models.isEmpty {
+            Spacer()
+        } else {
+            ScrollView {
+                LazyVStack {
+                    ForEach(0...models.count - 1, id: \.self) { index in
+                        let model = models[index]
+                        Button(action: {
+                            onPopulateFields(model)
+                        }) {
+                            DevicetItem(
+                                model: model,
+                                onDelete: {
+                                    viewModel.updateAlertModel(
+                                        appAlertModel: AppAlertModel(
+                                            toConfirm: "削除しますか？",
+                                            onOkClicked: {
+                                                viewModel.resetAlertModel()
+                                                viewModel.deleteDeviceModel(model: model)
+                                            }, onCancelClicked: {
+                                                viewModel.resetAlertModel()
+                                            }
+                                        )
+                                    )
+                                })
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        
+                        if !models.isEmpty {
+                            Divider()
+                        }
+                    }
+                }
+                .padding(.horizontal, 10)
+            }
+        }
+    }
+}
+
+struct DevicetItem: View {
+    let model: DeviceModel
+    let onDelete: () -> Void
+    var body: some View {
+        HStack {
+            Text(model.deviceSsid)
+                .font(AppFont.regular_16)
+                .scaledToFit()
+            Spacer()
+            
+            Button(action: {
+                onDelete()
+            }) {
+                Image(systemName: "trash")
+                    .foregroundColor(.red)
+            }
+        }
+        .foregroundColor(.gray)
+        .contentShape(Rectangle())
+        .padding(.vertical, 20)
     }
 }

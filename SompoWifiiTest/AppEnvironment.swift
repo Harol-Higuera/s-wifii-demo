@@ -23,12 +23,16 @@ extension AppEnvironment {
         
         // MARK: ConnectionsRepositoryの初期化
         let connectionsRepository = ConnectionsRepositoryImpl(userDefaults: UserDefaults.standard)
+        
+        // MARK: ConnectionsRepositoryの初期化
+        let devicesRepository = DevicesRepositoryImpl(userDefaults: UserDefaults.standard)
 
         // MARK: WifiRepositoryの初期化
         let wifiRepositoryRepository = WifiRepositoryImpl(connectionsRepository: connectionsRepository)
         
         return .init(
             connectionsRepository: connectionsRepository,
+            devicesRepositoryRepository: devicesRepository,
             wifiRepositoryRepository: wifiRepositoryRepository
         )
     }

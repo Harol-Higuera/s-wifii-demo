@@ -14,10 +14,6 @@ protocol ConnectionsRepository {
     func getDevice() -> DeviceModel?
     func removeDevice()
     func setDevice(deviceModel: DeviceModel, completion: @escaping (Bool) -> Void)
-    /// Fucntions for stored devices
-    func addDeviceToMemory(_ device: DeviceModel, completion: @escaping  (_ error: String?) -> Void)
-    func loadDevicesFromMemory() -> [DeviceModel]
-    func deleteDeviceToMemory(_ device: DeviceModel, completion: @escaping  (_ error: String?) -> Void)
 }
 
 final class ConnectionsRepositoryImpl: ConnectionsRepository {
@@ -71,43 +67,6 @@ final class ConnectionsRepositoryImpl: ConnectionsRepository {
         }
     }
     
-    func addDeviceToMemory(_ device: DeviceModel, completion: @escaping  (_ error: String?) -> Void) {
-        var currentDevices = loadDevicesFromMemory()
-        if (currentDevices.contains(where: { item in
-            item.deviceSsid == device.deviceSsid
-        })) {
-            completion("エラー。SSIDが追加されています。")
-            return
-        }
-        
-        currentDevices.append(device)
-        guard let data = try? JSONEncoder().encode(currentDevices) else { return }
-        UserDefaults.standard.set(data, forKey: "devices")
-    }
-    
-    func loadDevicesFromMemory() -> [DeviceModel] {
-        guard
-            let data = UserDefaults.standard.data(forKey: "devices"),
-            let orders = try? JSONDecoder().decode([DeviceModel].self, from: data)
-        else { return [] }
-        return orders
-    }
-    
-    func deleteDeviceToMemory(_ device: DeviceModel, completion: @escaping  (_ error: String?) -> Void) {
-        var currentDevices = loadDevicesFromMemory()
-        if (!currentDevices.contains(where: { item in
-            item.deviceSsid == device.deviceSsid
-        })) {
-            completion("エラー。SSIDがありませんでした。")
-            return
-        }
-        currentDevices.removeAll { item in
-            item.deviceSsid == device.deviceSsid
-        }
-        guard let data = try? JSONEncoder().encode(currentDevices) else { return }
-        UserDefaults.standard.set(data, forKey: "devices")
-    }
-    
     deinit {
         
     }
@@ -122,14 +81,4 @@ struct StubConnectionsRepository: ConnectionsRepository {
     func removeDevice() {
         
     }
-    func addDeviceToMemory(_ device: DeviceModel, completion: @escaping  (_ error: String?) -> Void) {
-        
-    }
-    func loadDevicesFromMemory() -> [DeviceModel] {
-        return []
-    }
-    func deleteDeviceToMemory(_ device: DeviceModel, completion: @escaping  (_ error: String?) -> Void) {
-        
-    }
-    
 }
