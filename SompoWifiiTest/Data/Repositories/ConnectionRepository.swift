@@ -67,6 +67,10 @@ final class ConnectionRepositoryImpl: ConnectionRepository {
     /// - The app connects the device to a different Wi-Fi network.
     /// - The user connects the device to a different Wi-Fi network.
     ///
+    ///When joinOnce is set to false:
+    /// - The hostpot will not be disconnected when app is killed or in background.
+    /// - connection will be kept and it will auto join when Wifi is ON in the device.
+    ///
     func connect(deviceModel: DeviceModel, completion: @escaping  (_ error: String?) -> Void) {
     
           if #available(iOS 11.0, *) {
